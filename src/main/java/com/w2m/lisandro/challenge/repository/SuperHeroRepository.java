@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface SuperHeroRepository extends CrudRepository<SuperHero, Integer> {
     List<SuperHero> findByNameContainingIgnoreCase(String name);
+
+    List<SuperHero> findAll();
 }
