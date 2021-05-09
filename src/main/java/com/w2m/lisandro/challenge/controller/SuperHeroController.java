@@ -1,5 +1,6 @@
 package com.w2m.lisandro.challenge.controller;
 
+import com.w2m.lisandro.challenge.annotation.LogExecutionTime;
 import com.w2m.lisandro.challenge.model.SuperHero;
 import com.w2m.lisandro.challenge.service.SuperHeroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class SuperHeroController {
     private SuperHeroService superHeroService;
 
     @GetMapping
+    @LogExecutionTime
     public List<SuperHero> find(@RequestParam(required = false) String name){
         if(StringUtils.hasText(name)){
             return superHeroService.findByName(name);
