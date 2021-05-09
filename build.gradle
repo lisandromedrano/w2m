@@ -31,6 +31,9 @@ dependencies {
 	testImplementation group: 'org.hamcrest', name: 'hamcrest-core', version: '2.2'
 	testCompile group: 'io.rest-assured', name: 'rest-assured'
 
+	implementation 'io.springfox:springfox-swagger2:2.8.0'
+	implementation 'io.springfox:springfox-swagger-ui:2.8.0'
+
 }
 
 test {
