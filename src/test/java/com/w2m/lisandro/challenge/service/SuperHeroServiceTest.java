@@ -81,7 +81,7 @@ public class SuperHeroServiceTest {
         when(superHeroRepository.findById(any())).thenReturn(Optional.of(superHero));
         ArgumentCaptor<SuperHero> captor = ArgumentCaptor.forClass(SuperHero.class);
 
-        SuperHero saved = superHeroService.update(1, "test");
+        SuperHero saved = superHeroService.update(1, superHero);
 
         verify(superHeroRepository).save(captor.capture());
         assertThat(saved.getId()).isEqualTo(1);
@@ -92,7 +92,10 @@ public class SuperHeroServiceTest {
     @Test
     public void testUpdateNotFound() {
         assertThrows(NoSuchElementException.class, () -> {
-            superHeroService.update(1, "test");
+            SuperHero superHero = new SuperHero();
+            superHero.setId(1);
+            superHero.setName("test");
+            superHeroService.update(1, superHero);
         });
     }
 

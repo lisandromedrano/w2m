@@ -28,9 +28,13 @@ public class SuperHeroService {
         return superHeroRepository.save(newSuperHero);
     }
 
-    public SuperHero update(Integer id, String name){
+    public SuperHero save(SuperHero newSuperHero){
+        return superHeroRepository.save(newSuperHero);
+    }
+
+    public SuperHero update(Integer id, SuperHero superHero){
         SuperHero update = superHeroRepository.findById(id).get();
-        update.setName(name);
+        update.setName(superHero.getName());
 
         return superHeroRepository.save(update);
     }
