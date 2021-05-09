@@ -1,5 +1,6 @@
 package com.w2m.lisandro.challenge.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,10 +21,12 @@ import java.time.LocalDateTime;
 abstract class AuditableEntity {
     @Column(name = "created_at", updatable = false)
     @CreatedDate
+    @JsonIgnore
     protected LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     @LastModifiedDate
+    @JsonIgnore
     protected LocalDateTime updatedAt;
 
 }

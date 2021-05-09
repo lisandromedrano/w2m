@@ -18,10 +18,11 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.doThrow;
 
-public class SuperHeroControllerTest extends BaseApiTest {
+public class SuperHeroControllerTest extends BaseApiTest implements SuperHeroControllerTestCases {
     @MockBean
     private SuperHeroService superHeroService;
 
+    @Override
     @Test
     public void testFindAll(){
         SuperHero superman = new SuperHero(1, "Superman");
@@ -38,6 +39,7 @@ public class SuperHeroControllerTest extends BaseApiTest {
         assertThat(response).hasSize(2);
     }
 
+    @Override
     @Test
     public void testFindByName(){
         SuperHero superman = new SuperHero(1, "Superman");
@@ -55,6 +57,7 @@ public class SuperHeroControllerTest extends BaseApiTest {
         assertThat(response).hasSize(2);
     }
 
+    @Override
     @Test
     public void testGetById_200_OK(){
         SuperHero superman = new SuperHero(1, "Superman");
@@ -69,6 +72,7 @@ public class SuperHeroControllerTest extends BaseApiTest {
     }
 
 
+    @Override
     @Test
     public void testGetById_404_Not_Found(){
         doThrow(NoSuchElementException.class).when(superHeroService).findById(anyInt());
@@ -79,6 +83,7 @@ public class SuperHeroControllerTest extends BaseApiTest {
                 .statusCode(HttpStatus.NOT_FOUND.value());
     }
 
+    @Override
     @Test
     public void testPost_200_OK(){
         SuperHero superman = new SuperHero(1, "Superman");
@@ -97,6 +102,7 @@ public class SuperHeroControllerTest extends BaseApiTest {
 
     }
 
+    @Override
     @Test
     public void testPut_200_OK(){
         SuperHero superman = new SuperHero(1, "Superman");
@@ -117,6 +123,7 @@ public class SuperHeroControllerTest extends BaseApiTest {
 
     }
 
+    @Override
     @Test
     public void testPut_404_Not_Found(){
         doThrow(NoSuchElementException.class).when(superHeroService).update(anyInt(), any());
@@ -133,6 +140,7 @@ public class SuperHeroControllerTest extends BaseApiTest {
 
     }
 
+    @Override
     @Test
     public void testDelete_204_No_Content(){
 
@@ -145,6 +153,7 @@ public class SuperHeroControllerTest extends BaseApiTest {
                 .statusCode(HttpStatus.NO_CONTENT.value());
     }
 
+    @Override
     @Test
     public void testDelete_404_Not_Found(){
         doThrow(EmptyResultDataAccessException.class).when(superHeroService).delete(anyInt());

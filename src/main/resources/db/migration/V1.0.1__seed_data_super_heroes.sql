@@ -1,5 +1,3 @@
-delete from super_heroes;
-
 insert into super_heroes (id, name, created_at, updated_at) values (1, 'Acquaman',now(),now());
 insert into super_heroes (id, name, created_at, updated_at) values (2, 'Superman',now(),now());
 insert into super_heroes (id, name, created_at, updated_at) values (3, 'Birdman',now(),now());
